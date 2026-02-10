@@ -7,19 +7,35 @@ body {
     height: 100vh;
 }
 
+.container {
+    display: flex;
+    flex-direction: column; /* сверху вниз */
+    justify-content: space-between; /* текст вверху, кальк внизу */
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+/* текст вверху */
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 5px
+}
+
 .calculator {
     background: #333;
     padding: 15px;
     border-radius: 10px;
     width: 260px;
+    margin-bottom: 60px;
 }
-
 #display {
     width: 94%;
     height: 50px;
     font-size: 22px;
     text-align: right;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     padding-right: 10px;
 }
 
