@@ -2,11 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Presstester</title>
+    <title>Presstester - самый необычный калькулятор</title>
+     <meta name="description" content="PRESSTESTER — сайт, который проверяет, как вы нажимаете клавиши. Секретные коды и пасхалки ждут вас.">
     <link rel="stylesheet" href="calculator.css">
 </head>
 <body>
-
+	<div class="container">
+		<div class="header">
+			<h1>PRESSTESTER</h1>
+      <p>PRESSTESTER — сайт, который проверяет, как вы нажимаете клавиши. Секретные коды и пасхалки ждут вас!</p>
+		</div>
 <div class="calculator">
     <input type="text" id="display" value="0" readonly>
 
@@ -34,9 +39,9 @@
         <button type="button" onclick="press('0')">0</button>
         <button type="button" onclick="press('.')">.</button>
         <button type="button" onclick="calculate()" class="equal">=</button>
-    </div>
+    	</div>
+	</div>
 </div>
-
 <script src="calculator.js"></script>
 </body>
 </html>
