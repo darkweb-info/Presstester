@@ -55,3 +55,18 @@ document.addEventListener("keydown", function(event) {
         clearDisplay();
     }
 });
+
+function calculate() {
+    try {
+        let exp = display.value.replace(/(\d+(\.\d+)?)%/g, "($1/100)");
+        display.value = eval(exp);
+
+        if (Number(display.value) === 67) {
+            window.open("67.html", "_blank");
+        }
+
+    } catch {
+        display.value = "Ошибка";
+    }
+}
+
