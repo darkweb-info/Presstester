@@ -1,47 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Presstester - самый необычный калькулятор</title>
-     <meta name="description" content="PRESSTESTER — сайт, который проверяет, как вы нажимаете клавиши. Секретные коды и пасхалки ждут вас.">
-    <link rel="stylesheet" href="calculator.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0e1c">
+  <meta name="description" content="PRESSTESTER — calculator with secret codes and easter eggs">
+  <title>PRESSTESTER</title>
+  <link rel="stylesheet" href="calculator.css">
+  <script src="calculator.js" defer></script>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<h1>PRESSTESTER</h1>
-      <p>PRESSTESTER — сайт, который проверяет, как вы нажимаете клавиши. Секретные коды и пасхалки ждут вас!</p>
-		</div>
-<div class="calculator">
-    <input type="text" id="display" value="0" readonly>
+  <main class="container">
+    <header class="header">
+      <div class="label"><span class="status-dot"></span> PRESS LAB / 001</div>
+      <h1>PRESS<span>TESTER</span></h1>
+      <p>Обычный калькулятор. Или нет?</p>
+    </header>
 
-    <div class="buttons">
-        <button type="button" onclick="clearDisplay()">C</button>
-        <button type="button" onclick="backspace()">⌫</button>
-        <button type="button" onclick="press('%')">%</button>
-        <button type="button" onclick="press('/')">÷</button>
-
+    <section class="calculator" aria-label="Калькулятор">
+      <div class="display-caption">CALCULATOR <span>•</span> SECRET MODE</div>
+      <input id="display" value="0" type="text" readonly aria-label="Результат вычислений" />
+      <div class="buttons">
+        <button type="button" class="function" onclick="clearDisplay()">C</button>
+        <button type="button" class="function" onclick="backspace()" aria-label="Удалить символ">⌫</button>
+        <button type="button" class="function" onclick="press('%')">%</button>
+        <button type="button" class="operator" onclick="press('/')">÷</button>
         <button type="button" onclick="press('7')">7</button>
         <button type="button" onclick="press('8')">8</button>
         <button type="button" onclick="press('9')">9</button>
-        <button type="button" onclick="press('*')">×</button>
-
+        <button type="button" class="operator" onclick="press('*')">×</button>
         <button type="button" onclick="press('4')">4</button>
         <button type="button" onclick="press('5')">5</button>
         <button type="button" onclick="press('6')">6</button>
-        <button type="button" onclick="press('-')">−</button>
-
+        <button type="button" class="operator" onclick="press('-')">−</button>
         <button type="button" onclick="press('1')">1</button>
         <button type="button" onclick="press('2')">2</button>
         <button type="button" onclick="press('3')">3</button>
-        <button type="button" onclick="press('+')">+</button>
-
-        <button type="button" onclick="press('0')">0</button>
+        <button type="button" class="operator" onclick="press('+')">+</button>
+        <button type="button" class="wide" onclick="press('0')">0</button>
         <button type="button" onclick="press('.')">.</button>
-        <button type="button" onclick="calculate()" class="equal">=</button>
-    	</div>
-	</div>
-</div>
-<script src="calculator.js"></script>
+        <button type="button" class="equal" onclick="calculate()" aria-label="Равно">=</button>
+      </div>
+    </section>
+    <footer>MADE TO SURPRISE. <span>TRY SOME NUMBERS.</span></footer>
+  </main>
+
+  <div id="easterEgg" class="easter-egg" hidden role="dialog" aria-label="Secret code 67" aria-modal="true">
+    <div class="confetti confetti-a"></div><div class="confetti confetti-b"></div>
+    <span class="easter-tag">SECRET UNLOCKED</span>
+    <img class="easter-gif" src="six-seven.gif" alt="Анимированное SIX SEVEN 67" />
+    <div class="easter-subtitle">SIX • SEVEN</div>
+    <button class="back-button" type="button" onclick="closeEasterEgg()">← ВЕРНУТЬСЯ</button>
+    <button class="replay-button" type="button" onclick="replaySixSeven()" aria-label="Повторить звук">↻ ПОВТОРИТЬ ЗВУК</button>
+  </div>
+  <audio id="sixSevenAudio" src="six-seven.mp3" preload="auto"></audio>
 </body>
 </html>

@@ -1,0 +1,2 @@
+PRESSTESTER Android Edition v1.2
+67 only; any evaluated expression equal to 67 triggers fullscreen animation and loud voice.
