@@ -46,8 +46,7 @@ public class MainActivity extends Activity {
         webView.loadUrl("file:///android_asset/calculator.html");
     }
 
-    private void setImmersive(boolean active) {
-        View decor = getWindow().getDecorView();
+public void setImmersive(boolean active) {        View decor = getWindow().getDecorView();
         decor.setSystemUiVisibility(active
             ? (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                | View.SYSTEM_UI_FLAG_FULLSCREEN
