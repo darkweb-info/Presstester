@@ -4,6 +4,17 @@ const display = document.getElementById("display");
 const easterEgg = document.getElementById("easterEgg");
 const audio = document.getElementById("sixSevenAudio");
 let justCalculated = false;
+let soundOn = true;
+
+function toggleSound() {
+  soundOn = !soundOn;
+  const toggle = document.getElementById("soundToggle");
+  toggle.classList.toggle("muted", !soundOn);
+  toggle.textContent = soundOn ? "♫" : "♪̸";
+  toggle.setAttribute("aria-label", soundOn ? "Отключить звук" : "Включить звук");
+  if (!soundOn) { audio.pause(); audio.currentTime = 0; }
+}
+
 
 function press(value) {
   if (!easterEgg.hidden) return;
@@ -77,7 +88,7 @@ function showEasterEgg() {
 }
 
 function replaySixSeven() {
-  if (easterEgg.hidden) return;
+  if (easterEgg.hidden || !soundOn) return;
   audio.pause();
   audio.currentTime = 0;
   audio.volume = 1; // Max in-app volume; system media volume remains user-controlled.

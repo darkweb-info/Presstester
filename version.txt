@@ -1,2 +1,1 @@
-PRESSTESTER Android Edition v1.2
-67 only; any evaluated expression equal to 67 triggers fullscreen animation and loud voice.
+Presstester v1.3 — new icon, redesigned calculator, pure CSS six-seven animation, voice processing, Java setImmersive fix.

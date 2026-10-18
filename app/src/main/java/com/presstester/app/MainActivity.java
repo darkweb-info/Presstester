@@ -16,24 +16,22 @@ public class MainActivity extends Activity {
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(Color.rgb(10, 14, 28));
-        getWindow().setNavigationBarColor(Color.rgb(7, 9, 16));
+        getWindow().setStatusBarColor(Color.rgb(8, 10, 20));
+        getWindow().setNavigationBarColor(Color.rgb(8, 10, 20));
         webView = new WebView(this);
-        webView.setBackgroundColor(Color.rgb(10, 14, 28));
-        WebSettings s = webView.getSettings();
-        s.setJavaScriptEnabled(true);
-        s.setDomStorageEnabled(false);
-        s.setAllowFileAccess(true); // Only bundled local HTML/assets.
-        s.setAllowContentAccess(false);
-        s.setAllowFileAccessFromFileURLs(false);
-        s.setAllowUniversalAccessFromFileURLs(false);
-        s.setMediaPlaybackRequiresUserGesture(false); // Play offline sound on 67.
-        s.setSupportMultipleWindows(false);
-        // Only local, bundled assets are loaded. Let the 67 animation take over
-        // the entire screen, including system bars, and restore them on exit.
+        webView.setBackgroundColor(Color.rgb(8, 10, 20));
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(false);
+        settings.setAllowFileAccess(true);
+        settings.setAllowContentAccess(false);
+        settings.setAllowFileAccessFromFileURLs(false);
+        settings.setAllowUniversalAccessFromFileURLs(false);
+        settings.setMediaPlaybackRequiresUserGesture(false);
+        settings.setSupportMultipleWindows(false);
         webView.addJavascriptInterface(new Object() {
             @JavascriptInterface public void setEasterEggActive(boolean active) {
-                runOnUiThread(() -> setImmersive(active));
+                runOnUiThread(() -> updateSecretFullscreen(active));
             }
         }, "PresstesterBridge");
         webView.setWebChromeClient(new WebChromeClient());
@@ -46,7 +44,9 @@ public class MainActivity extends Activity {
         webView.loadUrl("file:///android_asset/calculator.html");
     }
 
-public void setImmersive(boolean active) {        View decor = getWindow().getDecorView();
+    // Deliberately not named setImmersive: Android Activity already defines that method.
+    private void updateSecretFullscreen(boolean active) {
+        View decor = getWindow().getDecorView();
         decor.setSystemUiVisibility(active
             ? (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -68,7 +68,7 @@ public void setImmersive(boolean active) {        View decor = getWindow().getDe
     }
 
     @Override protected void onDestroy() {
-        setImmersive(false);
+        updateSecretFullscreen(false);
         if (webView != null) { webView.destroy(); webView = null; }
         super.onDestroy();
     }
